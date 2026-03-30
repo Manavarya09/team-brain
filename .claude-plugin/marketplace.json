@@ -1,0 +1,18 @@
+{
+  "name": "team-brain-marketplace",
+  "owner": {
+    "name": "Manavarya Singh",
+    "url": "https://github.com/Manavarya09"
+  },
+  "plugins": [
+    {
+      "name": "team-brain",
+      "source": ".",
+      "description": "Git-native shared AI memory for teams. Lessons, decisions, conventions auto-loaded into Claude Code sessions.",
+      "version": "1.0.0",
+      "author": { "name": "Manavarya Singh" },
+      "category": "collaboration",
+      "tags": ["team-memory", "shared-context", "conventions", "onboarding"]
+    }
+  ]
+}

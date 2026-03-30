@@ -1,0 +1,22 @@
+{
+  "name": "team-brain",
+  "description": "Git-native shared AI memory for teams. Record lessons, decisions, and conventions that auto-generate CLAUDE.md, .cursorrules, and AGENTS.md. Your AI remembers what your team learned.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Manavarya Singh",
+    "url": "https://github.com/Manavarya09"
+  },
+  "homepage": "https://github.com/Manavarya09/team-brain",
+  "repository": "https://github.com/Manavarya09/team-brain",
+  "license": "MIT",
+  "keywords": [
+    "team",
+    "memory",
+    "shared-context",
+    "conventions",
+    "decisions",
+    "onboarding",
+    "knowledge-base"
+  ],
+  "skills": "./skills/"
+}

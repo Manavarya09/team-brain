@@ -1,0 +1,11 @@
+{
+  "brain_max_lines": 180,
+  "auto_generate": true,
+  "inject_into_claude_md": true,
+  "generate_cursorrules": false,
+  "generate_agents_md": false,
+  "priority_order": ["conventions", "decisions", "lessons", "knowledge"],
+  "max_entries_per_section": 20,
+  "include_dates": true,
+  "include_authors": true
+}

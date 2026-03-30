@@ -1,0 +1,33 @@
+{
+  "name": "team-brain",
+  "version": "1.0.0",
+  "description": "Git-native shared AI memory for teams — auto-generates CLAUDE.md, .cursorrules, and AGENTS.md",
+  "main": "scripts/store.js",
+  "scripts": {
+    "test": "node scripts/store.js init /tmp/test-brain && node scripts/store.js add-entry /tmp/test-brain lesson 'Test lesson' 'Test content' tester test && node scripts/search.js search /tmp/test-brain test && echo 'All checks passed'",
+    "init": "node scripts/store.js init",
+    "generate": "node scripts/generator.js generate",
+    "stats": "node scripts/stats.js"
+  },
+  "keywords": [
+    "claude-code",
+    "team-memory",
+    "shared-context",
+    "ai-coding",
+    "claude",
+    "cursor",
+    "copilot",
+    "agents-md",
+    "adr"
+  ],
+  "author": "Manavarya Singh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Manavarya09/team-brain.git"
+  },
+  "homepage": "https://github.com/Manavarya09/team-brain#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
