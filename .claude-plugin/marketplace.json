@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "team-brain",
-      "source": ".",
+      "source": "./",
       "description": "Git-native shared AI memory for teams. Lessons, decisions, conventions auto-loaded into Claude Code sessions.",
       "version": "1.0.0",
       "author": { "name": "Manavarya Singh" },
