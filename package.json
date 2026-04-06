@@ -4,7 +4,9 @@
   "description": "Git-native shared AI memory for teams — auto-generates CLAUDE.md, .cursorrules, and AGENTS.md",
   "main": "scripts/store.js",
   "scripts": {
+    "pretest": "rm -rf /tmp/test-brain",
     "test": "node scripts/store.js init /tmp/test-brain && node scripts/store.js add-entry /tmp/test-brain lesson 'Test lesson' 'Test content' tester test && node scripts/search.js search /tmp/test-brain test && echo 'All checks passed'",
+    "posttest": "rm -rf /tmp/test-brain",
     "init": "node scripts/store.js init",
     "generate": "node scripts/generator.js generate",
     "stats": "node scripts/stats.js"

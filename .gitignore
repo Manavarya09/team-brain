@@ -1,3 +1,27 @@
+# Dependencies
 node_modules/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts
 assets/
+
+# Test artifacts
+/tmp/test-brain/
+
+# Runtime data
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
