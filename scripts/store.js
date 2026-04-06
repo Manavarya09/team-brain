@@ -9,12 +9,13 @@ const DEFAULT_CONFIG_PATH = path.join(__dirname, '..', 'data', 'default-config.j
 // --- Helpers ---
 
 function slugify(str) {
+  if (!str || typeof str !== 'string') return 'untitled';
   return str.toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
-    .slice(0, 60);
+    .slice(0, 60) || 'untitled';
 }
 
 function parseFrontmatter(content) {
@@ -107,6 +108,13 @@ function init(projectRoot) {
 // --- CRUD ---
 
 function addEntry(projectRoot, type, title, body, author, tags) {
+  if (!type || !TYPES.includes(type)) {
+    throw new Error(`Invalid entry type "${type}". Must be one of: ${TYPES.join(', ')}`);
+  }
+  if (!title || typeof title !== 'string' || title.trim().length === 0) {
+    throw new Error('Entry title is required and must be a non-empty string.');
+  }
+
   const dir = brainDir(projectRoot);
   if (!fs.existsSync(dir)) init(projectRoot);
 
@@ -169,6 +177,12 @@ function listEntries(projectRoot, type) {
 }
 
 function readEntry(filepath) {
+  if (!filepath || typeof filepath !== 'string') {
+    throw new Error('A valid file path is required to read an entry.');
+  }
+  if (!fs.existsSync(filepath)) {
+    throw new Error(`Entry not found: ${filepath}`);
+  }
   const content = fs.readFileSync(filepath, 'utf8');
   return parseFrontmatter(content);
 }
@@ -242,9 +256,18 @@ if (require.main === module) {
       break;
     case 'add-entry': {
       const [, type, title, body, author, tagsStr] = args;
-      const tags = tagsStr ? tagsStr.split(',') : [];
-      const entry = addEntry(root, type, title, body || '', author, tags);
-      console.log(`Created: ${entry.filename}`);
+      if (!type || !title) {
+        console.error('Usage: add-entry <root> <type> <title> [body] [author] [tags]');
+        process.exit(1);
+      }
+      try {
+        const tags = tagsStr ? tagsStr.split(',') : [];
+        const entry = addEntry(root, type, title, body || '', author, tags);
+        console.log(`Created: ${entry.filename}`);
+      } catch (err) {
+        console.error(`Error: ${err.message}`);
+        process.exit(1);
+      }
       break;
     }
     case 'list':

@@ -4,6 +4,9 @@ const path = require('path');
 const store = require('./store');
 
 function generateBrain(projectRoot) {
+  if (!projectRoot || typeof projectRoot !== 'string') {
+    throw new Error('A valid project root path is required.');
+  }
   const config = store.loadConfig(projectRoot);
   const maxLines = config.brain_max_lines || 180;
   const priorityOrder = config.priority_order || ['conventions', 'decisions', 'lessons', 'knowledge'];
@@ -68,6 +71,9 @@ function generateBrain(projectRoot) {
 }
 
 function injectIntoClaude(projectRoot) {
+  if (!projectRoot || typeof projectRoot !== 'string') {
+    throw new Error('A valid project root path is required.');
+  }
   const claudePath = path.join(projectRoot, 'CLAUDE.md');
   const brainPath = path.join(store.brainDir(projectRoot), 'BRAIN.md');
 

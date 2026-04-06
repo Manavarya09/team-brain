@@ -32,8 +32,11 @@ function scoreEntry(entry, tokens) {
 
   // Recency bonus (entries from last 7 days get +1)
   if (entry.meta.date) {
-    const age = (Date.now() - new Date(entry.meta.date).getTime()) / (1000 * 60 * 60 * 24);
-    if (age < 7) score += 1;
+    const parsedDate = new Date(entry.meta.date);
+    if (!isNaN(parsedDate.getTime())) {
+      const age = (Date.now() - parsedDate.getTime()) / (1000 * 60 * 60 * 24);
+      if (age < 7) score += 1;
+    }
   }
 
   return score;

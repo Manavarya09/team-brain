@@ -4,6 +4,9 @@ const path = require('path');
 const store = require('./store');
 
 function getStats(projectRoot) {
+  if (!projectRoot || typeof projectRoot !== 'string') {
+    throw new Error('A valid project root path is required.');
+  }
   const entries = store.listEntries(projectRoot);
   const contributors = store.getContributors(projectRoot);
   const brainPath = path.join(store.brainDir(projectRoot), 'BRAIN.md');
@@ -58,7 +61,8 @@ function formatStats(stats) {
 
   if (Object.keys(stats.contributors).length > 0) {
     for (const [name, count] of Object.entries(stats.contributors)) {
-      lines.push(`║    ${name.padEnd(18)} ${String(count).padStart(3)} entries     ║`);
+      const displayName = name.length > 18 ? name.slice(0, 17) + '…' : name.padEnd(18);
+      lines.push(`║    ${displayName} ${String(count).padStart(3)} entries     ║`);
     }
   }
 
