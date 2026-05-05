@@ -1,5 +1,11 @@
 # Team Brain
 
+[![License: MIT](https://img.shields.io/github/license/Manavarya09/team-brain?color=0a0a0a)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Manavarya09/team-brain?style=flat&color=0a0a0a)](https://github.com/Manavarya09/team-brain/stargazers)
+[![Issues](https://img.shields.io/github/issues/Manavarya09/team-brain?color=0a0a0a)](https://github.com/Manavarya09/team-brain/issues)
+[![Last commit](https://img.shields.io/github/last-commit/Manavarya09/team-brain?color=0a0a0a)](https://github.com/Manavarya09/team-brain/commits/main)
+
+
 **Git-native shared AI memory for teams.**
 
 Your teammate debugged that issue yesterday. Your team decided on REST over GraphQL last month. Your codebase has conventions that every AI session ignores.
