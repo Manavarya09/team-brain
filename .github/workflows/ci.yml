@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node from .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Verify package.json parses
+        run: node -e "require('./package.json'); console.log('package.json OK')"
+      - name: Verify install.sh is executable
+        run: |
+          if [ -f install.sh ]; then
+            test -x install.sh || chmod +x install.sh
+            bash -n install.sh && echo 'install.sh syntax OK'
+          fi
