@@ -1,0 +1,5 @@
+# Global owner — review on every PR.
+*       @Manavarya09
+
+# CI / GitHub config — owner only.
+/.github/   @Manavarya09
